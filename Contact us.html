@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact us - Moonshot Coaching</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="form-validation.js" defer></script>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="Moonshot-Coaching-Logo2.png" alt="Moonshot-Coaching-Logo" class="logo">
+    </div>
+
+    <div class="navigation">
+        <button><a href="Home.html">Home</a></button>
+        <button><a href="Coaching.html">Coaching</a></button>
+        <button><a href="About.html">About us</a></button>
+        <button><a href="Contact%20us.html">Contact us</a></button>
+        <button><a href="Cart.html">Cart</a></button>
+    </div>
+
+    <h1>Contact us</h1>
+    <p>
+        We would love to hear from you! Feel free to contact us for more info regarding training plans, pricing, nutrition, sports team management, and anything cycling related!
+    </p>
+    <br>
+    <div class="contact-section">
+        <div>
+            <h3>Get in Touch</h3>
+            Email: info@moonshotcoachingsa.com
+            <br>
+            Number: 082 123 4567
+        </div>
+        <div>
+            <h2>Send us a Message</h2>
+            <form action="/submit-contact-form" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required minlength="2">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required minlength="10"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

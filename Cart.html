@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+  
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="logo-container">
+        <img src="Moonshot-Coaching-Logo2.png" alt="Moonshot-Coaching-Logo" class="logo">
+    </div>
+
+    <div class="navigation">
+        <button><a href="Home.html">Home</a></button>
+        <button><a href="Coaching.html">Coaching</a></button>
+        <button><a href="About.html">About us</a></button>
+        <button><a href="Contact%20us.html">Contact us</a></button>
+        <button><a href="Cart.html">Cart</a></button>
+    </div>
+
+    <h1>Cart</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="cart-items">
+           
+        </tbody>
+    </table>
+
+    <div class="cart-buttons">
+        <button onclick="addItem('Personal Coaching', 500.00)">Personal Coaching (R500.00)</button>
+        <button onclick="addItem('Group Coaching', 700.00)">Group Coaching (R700.00)</button>
+        <button onclick="addItem('Workshops and Events', 650.00)">Workshops and Events (R650.00)</button>
+        <button onclick="addItem('Online Coaching', 400.00)">Online Coaching (R400.00)</button>
+        <button class="clear-cart-button" onclick="clearCart()">Clear Cart</button>
+    </div>
+
+    <h2>Total Cost: R<span id="total-cost">0.00</span></h2>
+
+    <script>
+        const cart = {};
+
+        function addItem(itemName, price) {
+            if (cart[itemName]) {
+                cart[itemName].quantity += 1;
+                cart[itemName].total = cart[itemName].quantity * cart[itemName].price;
+            } else {
+                cart[itemName] = {
+                    price: price,
+                    quantity: 1,
+                    total: price
+                };
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const totalCostElement = document.getElementById('total-cost');
+            cartItems.innerHTML = '';
+            let totalCost = 0;
+
+            for (const item in cart) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item}</td>
+                    <td>R${cart[item].price.toFixed(2)}</td>
+                    <td>${cart[item].quantity}</td>
+                    <td>R${cart[item].total.toFixed(2)}</td>
+                `;
+                cartItems.appendChild(row);
+                totalCost += cart[item].total;
+            }
+
+            totalCostElement.textContent = totalCost.toFixed(2);
+        }
+
+        function clearCart() {
+            for (const item in cart) {
+                delete cart[item];
+            }
+            updateCart();
+        }
+    </script>
+</body>
+</html>
